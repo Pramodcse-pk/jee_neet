@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JEE Instructions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    color:white;
+}
+
+/* CARD */
+.card{
+    width:500px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    text-align:center;
+    animation:fadeIn 0.8s ease;
+}
+
+/* TITLE */
+h1{
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+/* TEXT */
+p{
+    font-size:16px;
+    margin:10px 0;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+/* BUTTON CENTER */
+button{
+    margin-top:25px;
+    padding:14px 30px;
+    border:none;
+    border-radius:12px;
+    background:#38bdf8;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0ea5e9;
+    transform:scale(1.05);
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>📘 JEE MAINS INSTRUCTIONS</h1>
+
+    <p>✔ For correct answer +4 Marks</p>
+    <p>✔ For wrong answer -1 Marks</p>
+    <p>✔ Do not refresh the page during exam</p>
+    <p>✔ Time duration: 3 Hours</p>
+    <p>✔ Submit before time ends</p>
+
+    <button onclick="startExam()">
+        START EXAM
+    </button>
+
+</div>
+
+<script>
+
+function startExam(){
+    window.location.href = "startexam.html";
+}
+
+</script>
+
+</body>
+</html>

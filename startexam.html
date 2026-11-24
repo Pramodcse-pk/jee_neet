@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JEE MAINS PRACTICE TEST</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    min-height:100vh;
+    color:white;
+}
+
+/* HEADER */
+
+.header{
+    width:100%;
+    padding:20px 40px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+}
+
+.timer{
+    background:white;
+    color:#1e3a8a;
+    padding:12px 25px;
+    border-radius:12px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* MAIN */
+
+.container{
+    width:95%;
+    margin:30px auto;
+    display:flex;
+    gap:25px;
+}
+
+/* QUESTION PANEL */
+
+.question-panel{
+    flex:3;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.subject{
+    color:#facc15;
+    font-size:24px;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+.question-number{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:24px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+/* OPTIONS */
+
+.option{
+    background:rgba(255,255,255,0.1);
+    margin:15px 0;
+    padding:18px;
+    border-radius:15px;
+    transition:0.4s;
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.option:hover{
+    background:rgba(255,255,255,0.2);
+    border-color:#38bdf8;
+    transform:translateX(5px);
+}
+
+.option input{
+    margin-right:12px;
+    transform:scale(1.3);
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    color:white;
+}
+
+.prev{
+    background:#64748b;
+}
+
+.next{
+    background:#0ea5e9;
+}
+
+.flag{
+    background:#f59e0b;
+}
+
+.submit{
+    background:#22c55e;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* QUESTION NAVIGATOR */
+
+.navigator{
+    flex:1;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.navigator h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#facc15;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.q-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    color:#1e3a8a;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.q-btn:hover{
+    transform:scale(1.1);
+}
+
+.answered{
+    background:#22c55e !important;
+    color:white !important;
+}
+
+.flagged{
+    background:#f59e0b !important;
+    color:white !important;
+}
+
+.current{
+    background:#0ea5e9 !important;
+    color:white !important;
+}
+
+/* MESSAGE */
+
+.message{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+    font-weight:600;
+}
+
+.error{
+    background:#ef4444;
+}
+
+.success{
+    background:#22c55e;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .question{
+        font-size:20px;
+    }
+}
+.clear{
+    background:#ef4444;
+}
+
+.clear:hover{
+    background:#dc2626;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+        JEE MAINS PRACTICE TEST
+    </div>
+
+    <div class="timer" id="timer">
+        03:00:00
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <!-- QUESTION PANEL -->
+
+    <div class="question-panel">
+
+        <div class="subject" id="subject">
+            Mathematics
+        </div>
+
+        <div class="question-number" id="question-number">
+            Question 1 of 75
+        </div>
+
+        <div class="question" id="question-text">
+            What is sin 90° ?
+        </div>
+
+        <!-- OPTIONS -->
+
+        <div id="options-container">
+
+        </div>
+
+        <!-- MESSAGE -->
+
+        <div id="message" class="message"></div>
+
+        <!-- BUTTONS -->
+
+       <div class="buttons">
+
+    <button class="btn prev" onclick="previousQuestion()">
+        Previous
+    </button>
+
+    <button class="btn next" id="nextBtn" onclick="saveAndNext()">
+        Save & Next
+    </button>
+
+    <button class="btn flag" onclick="raiseFlag()">
+        Raise Flag
+    </button>
+
+    <button class="btn clear" onclick="clearResponse()">
+        Clear Response
+    </button>
+
+    <!-- SUBMIT BUTTON -->
+    <button 
+        class="btn submit"
+        id="submitBtn"
+        onclick="submitExam()"
+        style="display:none;"
+    >
+        Save & Submit Exam
+    </button>
+
+</div>
+</div>
+
+    <!-- NAVIGATOR -->
+
+    <div class="navigator">
+
+        <h2>Questions</h2>
+
+        <div class="question-grid" id="question-grid">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* QUESTIONS */
+
+const questions = [];
+
+for(let i=1;i<=75;i++){
+
+    let subject = "";
+
+    if(i<=25){
+        subject = "Mathematics";
+    }
+    else if(i<=50){
+        subject = "Physics";
+    }
+    else{
+        subject = "Chemistry";
+    }
+
+    questions.push({
+
+        question:`${subject} Question ${i}`,
+
+        options:["Option A","Option B","Option C","Option D"],
+
+        subject:subject
+    });
+}
+
+let currentQuestion = 0;
+
+let answers = {};
+
+let flagged = {};
+
+/* LOAD QUESTIONS */
+
+function loadQuestion(){
+
+    let q = questions[currentQuestion];
+
+    document.getElementById("subject").innerHTML =
+    q.subject;
+
+    document.getElementById("question-number").innerHTML =
+    `Question ${currentQuestion+1} of 75`;
+
+    document.getElementById("question-text").innerHTML =
+    q.question;
+
+    let optionsHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        optionsHTML += `
+
+        <label class="option">
+
+            <input 
+                type="radio"
+                name="answer"
+                value="${option}"
+                ${answers[currentQuestion] == option ? "checked" : ""}
+            >
+
+            ${option}
+
+        </label>
+
+        `;
+    });
+
+    document.getElementById("options-container").innerHTML =
+    optionsHTML;
+
+    updateNavigator();
+}
+
+/* NAVIGATOR */
+
+function createNavigator(){
+
+    let grid = document.getElementById("question-grid");
+
+    for(let i=0;i<75;i++){
+
+        let btn = document.createElement("button");
+
+        btn.innerHTML = i+1;
+
+        btn.classList.add("q-btn");
+
+        btn.onclick = function(){
+
+            currentQuestion = i;
+
+            loadQuestion();
+        };
+
+        btn.id = "qbtn"+i;
+
+        grid.appendChild(btn);
+    }
+}
+
+function updateNavigator(){
+
+    for(let i=0;i<75;i++){
+
+        let btn = document.getElementById("qbtn"+i);
+
+        btn.className = "q-btn";
+
+        if(answers[i]){
+            btn.classList.add("answered");
+        }
+
+        if(flagged[i]){
+            btn.classList.add("flagged");
+        }
+
+        if(i == currentQuestion){
+            btn.classList.add("current");
+        }
+    }
+}
+
+/* VALIDATION */
+
+function validateSelection(){
+
+    let selected =
+    document.querySelector('input[name="answer"]:checked');
+
+    if(!selected){
+
+        showMessage(
+            "⚠ Please select an answer",
+            "error"
+        );
+
+        return false;
+    }
+
+    answers[currentQuestion] = selected.value;
+
+    showMessage(
+        "✓ Answer Saved Successfully",
+        "success"
+    );
+
+    return true;
+}
+
+/* MESSAGE */
+
+function showMessage(text,type){
+
+    let msg = document.getElementById("message");
+
+    msg.style.display = "block";
+
+    msg.className = "message " + type;
+
+    msg.innerHTML = text;
+
+    setTimeout(()=>{
+
+        msg.style.display = "none";
+
+    },2000);
+}
+
+/* SAVE AND NEXT */
+
+function saveAndNext(){
+
+    if(validateSelection()){
+
+        if(currentQuestion < 74){
+
+            currentQuestion++;
+
+            loadQuestion();
+        }
+    }
+}
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+    }
+}
+
+/* FLAG */
+
+function raiseFlag(){
+
+    flagged[currentQuestion] = true;
+
+    updateNavigator();
+
+    showMessage(
+        "⚑ Question Flagged",
+        "success"
+    );
+}
+
+/* SUBMIT */
+
+function submitExam(){
+
+    let answeredCount = Object.keys(answers).length;
+
+    if(answeredCount < 75){
+
+        let confirmSubmit = confirm(
+            `You answered ${answeredCount} out of 75 questions.\n\nDo you want to submit exam?`
+        );
+
+        if(!confirmSubmit){
+            return;
+        }
+    }
+
+    alert(
+        `Exam Submitted Successfully ✅\n\nAnswered Questions : ${answeredCount}/75`
+    );
+
+    // Code executes after alert box is closed
+    window.location.href = "results.html";
+
+}
+
+/* TIMER */
+
+let totalTime = 3 * 60 * 60;
+
+function startTimer(){
+
+    let timer = setInterval(()=>{
+
+        let hours =
+        Math.floor(totalTime / 3600);
+
+        let minutes =
+        Math.floor((totalTime % 3600)/60);
+
+        let seconds =
+        totalTime % 60;
+
+        hours = hours < 10 ? "0"+hours : hours;
+
+        minutes = minutes < 10 ? "0"+minutes : minutes;
+
+        seconds = seconds < 10 ? "0"+seconds : seconds;
+
+        document.getElementById("timer").innerHTML =
+
+        `${hours}:${minutes}:${seconds}`;
+
+        if(totalTime <= 0){
+
+            clearInterval(timer);
+
+            alert("Time Up! Exam Submitted");
+
+            submitExam();
+        }
+
+        totalTime--;
+
+    },1000);
+}
+
+/* INITIALIZE */
+
+createNavigator();
+
+loadQuestion();
+
+startTimer();
+/* SHOW SUBMIT BUTTON ONLY IN LAST QUESTION */
+
+if(currentQuestion == 74){
+
+    document.getElementById("submitBtn").style.display = "block";
+
+    document.getElementById("nextBtn").style.display = "none";
+}
+else{
+
+    document.getElementById("submitBtn").style.display = "none";
+
+    document.getElementById("nextBtn").style.display = "block";
+}
+function loadQuestion(){
+
+    let q = questions[currentQuestion];
+
+    document.getElementById("subject").innerHTML =
+    q.subject;
+
+    document.getElementById("question-number").innerHTML =
+    `Question ${currentQuestion+1} of 75`;
+
+    document.getElementById("question-text").innerHTML =
+    q.question;
+
+    let optionsHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        optionsHTML += `
+
+        <label class="option">
+
+            <input 
+                type="radio"
+                name="answer"
+                value="${option}"
+                ${answers[currentQuestion] == option ? "checked" : ""}
+            >
+
+            ${option}
+
+        </label>
+
+        `;
+    });
+
+    document.getElementById("options-container").innerHTML =
+    optionsHTML;
+
+    /* LAST QUESTION */
+
+    if(currentQuestion == 74){
+
+        document.getElementById("submitBtn").style.display = "block";
+
+        document.getElementById("nextBtn").style.display = "none";
+    }
+    else{
+
+        document.getElementById("submitBtn").style.display = "none";
+
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    updateNavigator();
+}
+/* CLEAR RESPONSE */
+
+function clearResponse(){
+
+    let selected =
+    document.querySelector('input[name="answer"]:checked');
+
+    if(selected){
+
+        selected.checked = false;
+    }
+
+    delete answers[currentQuestion];
+
+    updateNavigator();
+
+    showMessage(
+        "✖ Response Cleared",
+        "error"
+    );
+}
+
+</script>
+
+</body>
+</html>

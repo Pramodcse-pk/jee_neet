@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JEE MAINS/NEET PRACTICE PORTAL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    padding:18px 40px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+/* MAIN */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding-top:120px;
+    padding-bottom:50px;
+}
+
+/* TITLE */
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h1{
+    font-size:40px;
+}
+
+.title p{
+    margin-top:10px;
+    font-size:18px;
+    color:#dbeafe;
+}
+
+/* RESULT CARD */
+
+.result-card{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    transition:0.4s;
+    animation:fadeIn 0.8s ease;
+}
+
+.result-card:hover{
+    transform:translateY(-5px);
+}
+
+/* TOP */
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+/* EXAM NAME */
+
+.exam-name{
+    font-size:24px;
+    font-weight:600;
+    color:#facc15;
+}
+
+/* DATE */
+
+.exam-date{
+    color:#d1d5db;
+    font-size:15px;
+}
+
+/* PERFORMANCE */
+
+.performance{
+    margin-top:20px;
+}
+
+.performance p{
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+/* BAR */
+
+.bar{
+    width:100%;
+    height:22px;
+    background:rgba(255,255,255,0.15);
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    border-radius:30px;
+    text-align:right;
+    padding-right:10px;
+    line-height:22px;
+    font-size:13px;
+    font-weight:600;
+    color:white;
+}
+
+/* COLORS */
+
+.high{
+    background:#22c55e;
+}
+
+.medium{
+    background:#f59e0b;
+}
+
+.low{
+    background:#ef4444;
+}
+
+/* STATUS */
+
+.status{
+    margin-top:18px;
+    font-size:16px;
+    font-weight:600;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+    .title h1{
+        font-size:30px;
+    }
+
+    .exam-name{
+        font-size:20px;
+    }
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    min-height:100vh;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    padding:18px 40px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* LOGO */
+.logo{
+    font-size:26px;
+    font-weight:700;
+    color:white;
+    letter-spacing:2px;
+}
+
+/* NAV RIGHT SIDE */
+nav ul{
+    display:flex;
+    gap:15px;
+    list-style:none;
+    align-items:center;
+}
+
+/* BUTTON STYLE */
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    padding:10px 16px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.12);
+    transition:0.3s;
+    font-weight:600;
+    position:relative;
+    overflow:hidden;
+}
+
+/* HOVER EFFECT */
+nav ul li a:hover{
+    background:#38bdf8;
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* CLICK EFFECT */
+nav ul li a:active{
+    transform:scale(0.95);
+}
+
+/* DASHBOARD CONTENT */
+.container{
+    padding-top:120px;
+    text-align:center;
+    color:white;
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:10px;
+    animation:fadeIn 1s ease;
+}
+
+p{
+    font-size:18px;
+    opacity:0.8;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        STUDENT DASHBOARD
+    </div>
+
+<nav>
+        <ul>
+
+            <li><a href="exams.html">Exams</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="key.html">Key</a></li>
+            <li><a href="account.html">Account</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <!-- TITLE -->
+
+    <div class="title">
+		<h1>RESULTS</h1>
+
+        <h3>Previous Attempted Exams</h3>
+
+        <p>
+            Track your performance and improve your preparation
+        </p>
+
+    </div>
+
+    <!-- RESULT 1 -->
+
+    <div class="result-card">
+
+        <div class="top">
+
+            <div>
+
+                <div class="exam-name">
+                    JEE MAINS TEST - 1
+                </div>
+
+                <div class="exam-date">
+                    Attempted On : 12 May 2026
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="performance">
+
+            <p>Performance : 92%</p>
+
+            <div class="bar">
+
+                <div class="fill high" style="width:92%">
+                    92%
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status">
+            ✅ Excellent Performance
+        </div>
+
+    </div>
+
+    <!-- RESULT 2 -->
+
+    <div class="result-card">
+
+        <div class="top">
+
+            <div>
+
+                <div class="exam-name">
+                    JEE MAINS TEST - 2
+                </div>
+
+                <div class="exam-date">
+                    Attempted On : 08 May 2026
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="performance">
+
+            <p>Performance : 74%</p>
+
+            <div class="bar">
+
+                <div class="fill medium" style="width:74%">
+                    74%
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status">
+            ⚡ Good Performance
+        </div>
+
+    </div>
+
+    <!-- RESULT 3 -->
+
+    <div class="result-card">
+
+        <div class="top">
+
+            <div>
+
+                <div class="exam-name">
+                    JEE MAINS TEST - 3
+                </div>
+
+                <div class="exam-date">
+                    Attempted On : 02 May 2026
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="performance">
+
+            <p>Performance : 48%</p>
+
+            <div class="bar">
+
+                <div class="fill low" style="width:48%">
+                    48%
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status">
+            ❌ Need More Practice
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

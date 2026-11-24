@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Status Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.status-box{
+    width:420px;
+    background:#fff;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.status-item{
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.badge{
+    width:58px;
+    height:58px;
+    color:#fff;
+    font-size:22px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:18px;
+}
+
+/* Answered */
+.answered{
+    background:#5fbf3f;
+    clip-path:irregularhexagon(15% 0%,85% 0%,100% 25%,100% 75%,85% 100%,15% 100%,0% 75%,0% 25%);
+}
+
+/* Not Answered */
+.not-answered{
+    background:#f15a24;
+    clip-path:polygon(25% 0, 85% 10%, 100% 60%, 70% 100%, 10% 80%, 0 30%);
+}
+
+/* Not Visited */
+.not-visited{
+    background:#f2f2f2;
+    border:2px solid #bbb;
+    color:#444;
+    border-radius:6px;
+}
+
+/* Review */
+.review{
+    background:#7b4bb7;
+    border-radius:50%;
+}
+
+/* Review + Answered */
+.review-answered{
+    background:#7b4bb7;
+    border-radius:50%;
+    position:relative;
+}
+
+.review-answered::after{
+    content:"✔";
+    position:absolute;
+    bottom:-2px;
+    right:-2px;
+    width:20px;
+    height:20px;
+    background:#6cc04a;
+    border-radius:50%;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    border:2px solid #fff;
+}
+
+.label{
+    font-size:22px;
+    color:#222;
+    line-height:1.4;
+}
+
+.small{
+    font-size:18px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="status-box">
+
+    <div class="status-item">
+        <div class="badge answered">6</div>
+        <div class="label">Answered</div>
+    </div>
+
+    <div class="status-item">
+        <div class="badge not-answered">3</div>
+        <div class="label">Not Answered</div>
+    </div>
+
+    <div class="status-item">
+        <div class="badge not-visited">35</div>
+        <div class="label">Not Visited</div>
+    </div>
+
+    <div class="status-item">
+        <div class="badge review">1</div>
+        <div class="label">Marked for Review</div>
+    </div>
+
+    <div class="status-item">
+        <div class="badge review-answered">5</div>
+        <div class="label small">
+            Answered & Marked for Review<br>
+            (will also be evaluated)
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

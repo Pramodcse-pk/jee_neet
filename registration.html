@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JEE MAINS/NEET PRACTICE PORTAL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:12px;
+    transition:0.4s;
+    background:rgba(255,255,255,0.1);
+    font-weight:600;
+}
+
+nav ul li a:hover{
+    background:#38bdf8;
+    transform:translateY(-3px);
+}
+
+/* SECTION */
+
+section{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top:140px;
+    padding-bottom:50px;
+}
+
+/* CARD */
+
+.card{
+    width:420px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    animation:fadeIn 1s ease;
+    color:white;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* INPUTS */
+
+input,
+select{
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    font-size:14px;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:12px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#16a34a;
+    transform:scale(1.05);
+}
+
+/* LABEL */
+
+label{
+    display:block;
+    margin-top:12px;
+    font-size:14px;
+    font-weight:500;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ERROR */
+
+.error{
+    border:2px solid red;
+}
+
+.success{
+    border:2px solid limegreen;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .card{
+        width:90%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        JEE MAINS/NEET PRACTICE PORTAL
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="final.html">HOME</a></li>
+
+            <li><a href="registration.html">REGISTRATION</a></li>
+
+            <li><a href="samplesyllabus.html">SAMPLE SYLLABUS</a></li>
+
+            <li><a href="login.html">LOGIN</a></li>
+
+            <li><a href="#admin">ADMIN</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- REGISTRATION -->
+
+<section id="registration">
+
+    <div class="card">
+
+        <h1>Student Registration</h1>
+
+        <input type="text" id="name" placeholder="Enter Full Name">
+
+        <input type="email" id="regemail" placeholder="Enter Email">
+
+        <input type="tel" id="mobile" placeholder="Enter Mobile Number">
+
+        <input type="password" id="regpassword" placeholder="Create Password">
+
+        <label>Choose Course:</label>
+
+        <select id="course">
+
+            <option value="">Select Course</option>
+
+            <option value="jee">JEE MAINS</option>
+
+            <option value="neet">NEET</option>
+
+        </select>
+
+        <label>Upload Photo:</label>
+
+        <input type="file" id="photo">
+
+        <button onclick="registerUser()">
+            Register Now
+        </button>
+
+    </div>
+
+</section>
+
+<script>
+
+function registerUser(){
+
+    let name = document.getElementById("name");
+    let email = document.getElementById("regemail");
+    let mobile = document.getElementById("mobile");
+    let password = document.getElementById("regpassword");
+    let course = document.getElementById("course");
+    let photo = document.getElementById("photo");
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    /* REMOVE OLD ERRORS */
+
+    [name,email,mobile,password,course].forEach(field=>{
+
+        field.classList.remove("error");
+        field.classList.remove("success");
+
+    });
+
+    /* NAME VALIDATION */
+
+    if(name.value.trim().length < 3){
+
+        alert("Enter valid full name");
+
+        name.classList.add("error");
+
+        return;
+    }
+
+    /* EMAIL VALIDATION */
+
+    if(!emailPattern.test(email.value)){
+
+        alert("Enter valid email address");
+
+        email.classList.add("error");
+
+        return;
+    }
+
+    /* MOBILE VALIDATION */
+
+    if(isNaN(mobile.value) || mobile.value.length != 10){
+
+        alert("Enter valid 10 digit mobile number");
+
+        mobile.classList.add("error");
+
+        return;
+    }
+
+    /* PASSWORD VALIDATION */
+
+    if(password.value.length < 6){
+
+        alert("Password must contain minimum 6 characters");
+
+        password.classList.add("error");
+
+        return;
+    }
+
+    /* COURSE VALIDATION */
+
+    if(course.value == ""){
+
+        alert("Please select course");
+
+        course.classList.add("error");
+
+        return;
+    }
+
+    /* PHOTO VALIDATION */
+
+    if(photo.files.length == 0){
+
+        alert("Please upload photo");
+
+        return;
+    }
+
+    /* SUCCESS BORDER */
+
+    [name,email,mobile,password,course].forEach(field=>{
+
+        field.classList.add("success");
+
+    });
+
+    /* SAVE DATA */
+
+    let studentData = {
+
+        name : name.value,
+        email : email.value,
+        mobile : mobile.value,
+        course : course.value
+
+    };
+
+    localStorage.setItem(
+        "student",
+        JSON.stringify(studentData)
+    );
+
+    /* SUCCESS MESSAGE */
+
+    let success = confirm(
+        "🎉 Registration Successful!\n\nClick OK to go Home Page"
+    );
+
+    /* REDIRECT */
+
+    if(success){
+
+        window.location.href = "final.html";
+    }
+}
+
+</script>
+
+
+
+</body>
+</html>
