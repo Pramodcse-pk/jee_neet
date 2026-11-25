@@ -89,7 +89,7 @@ function check_instruction(id) {
             });
         }
     } else {
-        window.location.href = $('#hdfBaseUrl').val() + "F:/PB1/JEE/PB/nta/exam.html?Lng=" + $('#drpLanguage').find('option:selected').val();
+        window.location.href = $('#hdfBaseUrl').val() + "nta/exam.html?Lng=" + $('#drpLanguage').find('option:selected').val();
     }
 }
 function page_click() {
@@ -108,7 +108,7 @@ function page_click() {
     });
     $(document).on('click', '#btnLogin', function (e) {
         e.preventDefault();
-        window.location.href = $('#hdfBaseUrl').val() + 'F:/PB1/JEE/PB/nta/Instruction.html';
+        window.location.href = $('#hdfBaseUrl').val() + 'nta/Instruction.html';
     });
     $(document).on('click', '#btnInstruction', function (e) {
         e.preventDefault();
@@ -142,7 +142,7 @@ function fill_paper(drp, ID) {
     $.ajax({
         method: 'GET',
         async: false,
-        url: $('#hdfBaseUrl').val() + 'F:/PB1/JEE/PB/nta/login.html',
+        url: $('#hdfBaseUrl').val() + 'nta/login.html',
         data: { 'ID': ID }
     }).done(function (data) {
         drp.html("");
