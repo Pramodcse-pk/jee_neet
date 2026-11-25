@@ -36,16 +36,16 @@ function changeIndtruct(q, flag) {
         $.ajax({
             method: 'GET',
             async: false,
-            url: $('#hdfBaseUrl').val() + 'Instructions_Lang',
+            url: $('#hdfBaseUrl').val() + 'instructions_Lang',
             data: { 'LangID': q }
         }).done(function (data) {
 
-            if ($('.ulInstruction> li:visible').length > 1) {
-                $('.ulInstruction li:last-child').remove();
+            if ($('.ulinstruction> li:visible').length > 1) {
+                $('.ulinstruction li:last-child').remove();
             }
             if (data != "") {
-                $.each(JSON.parse(data['Instructions']), function (i, item) {
-                    $('.ulInstruction').append('<li>' + item['Instruction'] + '</li>')
+                $.each(JSON.parse(data['instructions']), function (i, item) {
+                    $('.ulinstruction').append('<li>' + item['instruction'] + '</li>')
                 });
             }
         }).error(function () {
@@ -110,7 +110,7 @@ function page_click() {
         e.preventDefault();
         window.location.href = $('#hdfBaseUrl').val() + 'jee_neet/nta/instruction.html';
     });
-    $(document).on('click', '#btnInstruction', function (e) {
+    $(document).on('click', '#btninstruction', function (e) {
         e.preventDefault();
         var id = $(this).val();
         check_instruction(id)
