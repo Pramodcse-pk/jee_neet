@@ -36,7 +36,7 @@ function changeIndtruct(q, flag) {
         $.ajax({
             method: 'GET',
             async: false,
-            url: $('#hdfBaseUrl').val() + 'Quiz/Home/Instructions_Lang',
+            url: $('#hdfBaseUrl').val() + 'Instructions_Lang',
             data: { 'LangID': q }
         }).done(function (data) {
 
