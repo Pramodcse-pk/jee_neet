@@ -108,7 +108,7 @@ function page_click() {
     });
     $(document).on('click', '#btnLogin', function (e) {
         e.preventDefault();
-        window.location.href = $('#hdfBaseUrl').val() + 'jee_neet/nta/Instruction.html';
+        window.location.href = $('#hdfBaseUrl').val() + 'jee_neet/nta/instruction.html';
     });
     $(document).on('click', '#btnInstruction', function (e) {
         e.preventDefault();
